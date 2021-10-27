@@ -15,7 +15,7 @@ jobs:
     if: github.event.pull_request.user.login == 'paescuj' && github.event.pull_request.title == 'New Crowdin updates' && github.head_ref == 'translations'
     runs-on: ubuntu-latest
     steps:
-      - uses: reitermarkus/automerge@master
+      - uses: reitermarkus/automerge@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           merge-method: squash
