@@ -1,7 +1,7 @@
 name: Auto-Merge Translations from Crowdin
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
     # Only run if pull request includes changes in translation files
