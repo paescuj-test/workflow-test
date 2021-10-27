@@ -15,13 +15,12 @@ jobs:
     if: github.event.pull_request.user.login == 'paescuj' && github.event.pull_request.title == 'New Crowdin updates' && github.head_ref == 'translations'
     runs-on: ubuntu-latest
     steps:
-      - uses: reitermarkus/automerge@main
+      - name: Enable auto-merge
+        uses: peter-evans/enable-pull-request-automerge@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.BOT_TOKEN }}
+          pull-request-number: ${{ github.event.pull_request.number }}
           merge-method: squash
-          do-not-merge-labels: do-not-merge
-          pull-request: ${{ github.event.pull_request.number }}
-      #- name: Enable auto-merge
       #  run: gh pr merge --auto --squash "$PR_URL"
       #  env:
       #    PR_URL: ${{github.event.pull_request.html_url}}
