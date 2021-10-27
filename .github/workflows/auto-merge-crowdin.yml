@@ -15,12 +15,22 @@ jobs:
     if: github.event.pull_request.user.login == 'paescuj' && github.event.pull_request.title == 'New Crowdin updates' && github.head_ref == 'translations'
     runs-on: ubuntu-latest
     steps:
-      - uses: reitermarkus/automerge@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          merge-method: squash
-          do-not-merge-labels: do-not-merge
-          pull-request: ${{ github.event.pull_request.number }}
+      - name: Integration check
+         uses: squalrus/merge-bot@v0.4.5
+         with:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           reviewers: false
+           labels: ''
+           blocking_labels: do not merge
+           checks_enabled: true
+           method: squash
+           delete_source_branch: true
+      #- uses: reitermarkus/automerge@main
+      #  with:
+      #    token: ${{ secrets.GITHUB_TOKEN }}
+      #    merge-method: squash
+      #    do-not-merge-labels: do-not-merge
+      #    pull-request: ${{ github.event.pull_request.number }}
       #- name: Enable auto-merge
       #  run: gh pr merge --auto --squash "$PR_URL"
       #  env:
