@@ -34,11 +34,11 @@ jobs:
     name: Lint
     needs: pre_check
     if: needs.pre_check.outputs.should_skip != 'true'
-    uses: paescuj/workflow-test/.github/workflows/lint.yml@main
+    uses: test-workflows/workflow-test/.github/workflows/lint.yml@main
 
   # Run end-to-end tests only on push events (on main branch) for now
   e2e_tests:
     name: End-to-End Tests
     needs: pre_check
     if: github.event_name == 'push' && (needs.pre_check.outputs.should_skip != 'true' || needs.pre_check.outputs.successful_duplicate.event != 'push')
-    uses: paescuj/workflow-test/.github/workflows/e2e-tests.yml@main
+    uses: test-workflows/workflow-test/.github/workflows/e2e-tests.yml@main
