@@ -1,0 +1,11 @@
+name: End-to-End Tests
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
