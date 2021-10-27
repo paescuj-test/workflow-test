@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           merge-method: squash
           do-not-merge-labels: do-not-merge
-          pull-request: ${{ github.event.pull_request.id }}
+          pull-request: ${{ github.event.pull_request.number }}
       #- name: Enable auto-merge
       #  run: gh pr merge --auto --squash "$PR_URL"
       #  env:
