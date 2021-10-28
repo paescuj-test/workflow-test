@@ -18,7 +18,6 @@ jobs:
       # - Only files that do not require checks have been changed (paths_ignore)
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
       skipped_by: ${{ steps.skip_check.outputs.skipped_by }}
-      all: ${{ steps.skip_check.outputs }}
     steps:
       - name: Check if workflow is skippable
         id: skip_check
