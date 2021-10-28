@@ -54,7 +54,9 @@ jobs:
     steps:
       - run: |
           echo "should_skip (plain) ${{ needs.pre_check.outputs.should_skip }}"
-          echo "successful_duplicate.event (plain) ${{ needs.pre_check.outputs.skipped_by.event }}"
+          echo "skipped_by (plain) ${{ needs.pre_check.outputs.skipped_by }}"
+          echo "skipped_by.event (plain) ${{ fromJSON(needs.pre_check.outputs.skipped_by).event }}"
+          echo "skipped_by.event (plain) ${{ fromJSON(needs.pre_check.outputs.skipped_by.event) }}"
           echo "github.event_name ${{ github.event_name != 'push' }}"
           echo "should_skip ${{ needs.pre_check.outputs.should_skip == 'true' }}"
           echo "successful_duplicate.event ${{ needs.pre_check.outputs.skipped_by.event == 'push' }}"
