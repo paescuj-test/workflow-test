@@ -8,11 +8,10 @@ labels:
       branch: translations
       author: paescuj
 
-        #files:
-        #  any: [ "app/*" ]
-        #  all: [ "!app/config/**" ]
-        #  count:
-        #    gte: 1
-        #    lte: 1000
-
-        #- 'app/src/lang/translations/*.yaml'
+      #files:
+      #  any: [ "app/*" ]
+      #  all: [ "!app/config/**" ]
+      #  count:
+      #    gte: 1
+      #    lte: 1000
+      #- 'app/src/lang/translations/*.yaml'
