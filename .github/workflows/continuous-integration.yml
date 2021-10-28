@@ -37,10 +37,10 @@ jobs:
     with:
       should_skip: ${{ needs.pre_check.outputs.should_skip }}
 
-   test:
-     runs-on: ubunut-latest
+  test:
+    runs-on: ubunut-latest
     needs: pre_check
-     steps:
+    steps:
        - run: |
          echo ${{ needs.pre_check.outputs.should_skip }}
          echo ${{ needs.pre_check.outputs.successful_duplicate.event }}
