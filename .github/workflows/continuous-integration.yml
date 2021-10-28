@@ -19,7 +19,7 @@ jobs:
       #should_skip: ${{ steps.skip_check.outputs.should_skip }}
       should_skip: 'true'
       #skipped_by: ${{ steps.skip_check.outputs.skipped_by }}
-      skipped_by: ''
+      #skipped_by: ''
     steps:
       - name: Check if workflow is skippable
         id: skip_check
