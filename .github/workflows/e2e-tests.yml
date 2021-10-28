@@ -10,7 +10,7 @@ on:
 jobs:
   test:
     name: Test
-    if: inputs.should_skip != 'true'
+    #if: inputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
+      - run: echo ${{ inputs.should_skip }}

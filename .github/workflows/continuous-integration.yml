@@ -43,4 +43,4 @@ jobs:
     needs: pre_check
     uses: test-workflows/workflow-test/.github/workflows/e2e-tests.yml@main
     with:
-      should_skip: ${{ github.event_name != 'push' }} || (${{ needs.pre_check.outputs.should_skip }} && ${{ needs.pre_check.outputs.successful_duplicate.event == 'push' }})
+      should_skip: (${{ github.event_name != 'push' }} || (${{ needs.pre_check.outputs.should_skip }} && ${{ needs.pre_check.outputs.successful_duplicate.event == 'push' }}))
