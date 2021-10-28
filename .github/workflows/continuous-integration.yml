@@ -37,6 +37,16 @@ jobs:
     with:
       should_skip: ${{ needs.pre_check.outputs.should_skip }}
 
+  test2:
+    runs-on: ubuntu-latest
+    needs: pre_check
+    steps:
+      - uses: actions/github-script@v5
+        env:
+          SUCCESSFUL_DUPLICATE: ${{ needs.pre_check.outputs.successful_duplicate }}
+        with:
+          script: console.log(process.env.SUCCESSFUL_DUPLICATE)
+
   test:
     runs-on: ubuntu-latest
     needs: pre_check
