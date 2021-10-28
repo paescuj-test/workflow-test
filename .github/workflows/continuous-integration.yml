@@ -42,13 +42,13 @@ jobs:
     needs: pre_check
     steps:
       - run: |
-        echo ${{ needs.pre_check.outputs.should_skip }}
-        echo ${{ needs.pre_check.outputs.successful_duplicate.event }}
-        echo ${{ github.event_name != 'push' }}
-        echo ${{ needs.pre_check.outputs.should_skip == 'true' }}
-        echo ${{ needs.pre_check.outputs.successful_duplicate.event == 'push' }}
-        echo ${{ needs.pre_check.outputs.should_skip == 'true' && needs.pre_check.outputs.successful_duplicate.event == 'push' }}
-        echo ${{ github.event_name != 'push' || (needs.pre_check.outputs.should_skip == 'true' && needs.pre_check.outputs.successful_duplicate.event == 'push') }}
+          echo ${{ needs.pre_check.outputs.should_skip }}
+          echo ${{ needs.pre_check.outputs.successful_duplicate.event }}
+          echo ${{ github.event_name != 'push' }}
+          echo ${{ needs.pre_check.outputs.should_skip == 'true' }}
+          echo ${{ needs.pre_check.outputs.successful_duplicate.event == 'push' }}
+          echo ${{ needs.pre_check.outputs.should_skip == 'true' && needs.pre_check.outputs.successful_duplicate.event == 'push' }}
+          echo ${{ github.event_name != 'push' || (needs.pre_check.outputs.should_skip == 'true' && needs.pre_check.outputs.successful_duplicate.event == 'push') }}
 
   # Run end-to-end tests only on push events (on main branch) for now
   e2e_tests:
