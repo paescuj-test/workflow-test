@@ -1,0 +1,18 @@
+version: v1
+
+labels:
+  - label: automerge
+    sync: true
+    matcher:
+      title: New Crowdin updates
+      branch: translations
+      author: paescuj
+
+        #files:
+        #  any: [ "app/*" ]
+        #  all: [ "!app/config/**" ]
+        #  count:
+        #    gte: 1
+        #    lte: 1000
+
+        #- 'app/src/lang/translations/*.yaml'

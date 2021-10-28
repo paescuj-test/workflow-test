@@ -1,0 +1,12 @@
+name: Auto Label
+
+on:
+  pull_request_target:
+  
+jobs:
+  label:
+    name: Label
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label
+        uses: fuxingloh/multi-labeler@v1 
