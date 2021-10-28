@@ -1,18 +1,18 @@
 name: Lint
 
 on:
-  workflow_run:
-    workflows: ["CI"]
-    types:
-      - completed
+  push:
+  workflow_call:
+    inputs:
+      should_skip:
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   lint:
     name: Lint
+    if: inputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v5
-        with:
-          script: |
-            console.log(context)
-            console.log(github.event.workflow_run)
+      - run: exit 0

@@ -30,15 +30,17 @@ jobs:
           cancel_others: 'true'
           paths_ignore: '["app/src/lang/translations/*.yaml"]'
 
-            #lint:
-            #  name: Lint
-            #  needs: pre_check
-            #  if: needs.pre_check.outputs.should_skip != 'true'
-            #  uses: test-workflows/workflow-test/.github/workflows/lint.yml@main
+  lint:
+    name: Lint
+    needs: pre_check
+    uses: test-workflows/workflow-test/.github/workflows/lint.yml@main
+    with:
+      should_skip: ${{ needs.pre_check.outputs.should_skip }}
 
   # Run end-to-end tests only on push events (on main branch) for now
   e2e_tests:
     name: End-to-End Tests
     needs: pre_check
-    if: github.event_name == 'push' && (needs.pre_check.outputs.should_skip != 'true' || needs.pre_check.outputs.successful_duplicate.event != 'push')
     uses: test-workflows/workflow-test/.github/workflows/e2e-tests.yml@main
+    with:
+      should_skip: ${{ github.event_name == 'push' }} || (${{ needs.pre_check.outputs.should_skip }} && ${{ needs.pre_check.outputs.successful_duplicate.event == 'push' }})
