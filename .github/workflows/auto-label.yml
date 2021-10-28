@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label
-        uses: fuxingloh/multi-labeler@v1 
+        uses: paescuj/multi-labeler@main
