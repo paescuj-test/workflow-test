@@ -1,11 +1,18 @@
 name: Lint
 
 on:
-  workflow_call:
+  #workflow_call:
+  workflow_run:
+    workflows: ["CI"]
+
 
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - run: exit 0
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            console.log(context)
+            console.log(github.event.workflow_run)
