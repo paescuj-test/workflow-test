@@ -6,7 +6,6 @@ on:
     inputs:
       should_skip:
         required: false
-        default: false
         type: boolean
 
 jobs:
