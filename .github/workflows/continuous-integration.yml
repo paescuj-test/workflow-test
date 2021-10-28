@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/github-script@v5
         env:
-          SKIPPED_BY: ${{ fromJSON(needs.pre_check.outputs.skipped_by) }}
+          SKIPPED_BY: ${{ needs.pre_check.outputs.should_skip == 'true' && fromJSON(needs.pre_check.outputs.skipped_by) }}
         with:
           script: |
             console.log(process.env.SKIPPED_BY)
