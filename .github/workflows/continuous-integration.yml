@@ -44,7 +44,7 @@ jobs:
       - uses: actions/github-script@v5
         env:
           SKIPPED_BY: ${{ needs.pre_check.outputs.skipped_by }}
-          SKIPPED_BY_2: ${{ needs.pre_check.outputs.should_skip == 'true' && toJSON(needs.pre_check.outputs.skipped_by).event }}
+          SKIPPED_BY_2: ${{ needs.pre_check.outputs.should_skip == 'true' && fromJSON(needs.pre_check.outputs.skipped_by).event }}
         with:
           script: |
             console.log(process.env.SKIPPED_BY)
