@@ -43,10 +43,11 @@ jobs:
     steps:
       - uses: actions/github-script@v5
         env:
-          SKIPPED_BY: ${{ needs.pre_check.outputs.should_skip == 'true' && toJSON(needs.pre_check.outputs.skipped_by) }}
+          SKIPPED_BY: ${{ needs.pre_check.outputs.skipped_by }}
         with:
           script: |
             console.log(process.env.SKIPPED_BY)
+            console.log(process.env.SKIPPED_BY.event)
 
   # Run end-to-end tests only on push events (on main branch) for now
   e2e_tests:
