@@ -1,12 +1,11 @@
 name: Lint
 
 on:
-  push:
   workflow_call:
     inputs:
       should_skip:
         required: false
-        type: boolean
+        type: string
 
 jobs:
   lint:
