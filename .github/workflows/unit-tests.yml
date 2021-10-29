@@ -18,7 +18,7 @@ jobs:
           - '14'
           - '16'
     steps:
-      - run: exit 1
+      - run: exit 0
 
   result:
     name: Result
