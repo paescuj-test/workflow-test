@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    name: Test${{ matrix.node-version && ' (Node.js '${{ matrix.node-version }}')' }}
+    name: Test${{ matrix.node-version && " (Node.js ${{ matrix.node-version }})" }}
     if: inputs.should_skip != 'true'
     runs-on: ubuntu-latest
     strategy:
