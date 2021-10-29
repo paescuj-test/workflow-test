@@ -3,6 +3,7 @@ version: v1
 labels:
   - label: automerge
     sync: true
+    required: all
     matcher:
       title: New Crowdin updates
       branch: translations
