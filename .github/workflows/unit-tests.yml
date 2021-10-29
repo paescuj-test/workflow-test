@@ -21,8 +21,10 @@ jobs:
 
   result:
     name: Result
+    if: ${{ inputs.should_skip != 'true' && always() }}
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: All tests succeeded
-        run: echo "🎉"
+      - name: Mark result as failed
+        if: needs.test.result != 'success'
+        run: exit 1
