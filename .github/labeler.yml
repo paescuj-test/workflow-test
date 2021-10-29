@@ -8,11 +8,6 @@ labels:
       title: New Crowdin updates
       branch: translations
       author: paescuj
-
-      #files:
-      #  any: [ "app/*" ]
-      #  all: [ "!app/config/**" ]
-      #  count:
-      #    gte: 1
-      #    lte: 1000
-      #- 'app/src/lang/translations/*.yaml'
+      files:
+        all:
+          - 'app/src/lang/translations/*.yaml'
