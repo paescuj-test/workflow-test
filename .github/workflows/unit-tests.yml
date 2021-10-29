@@ -19,12 +19,12 @@ jobs:
     steps:
       - run: echo ${{ matrix.node-version }}
 
-  check:
-    name: Check
+  result:
+    name: Result
     if: ${{ always() }}
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Check build matrix status
-        if: ${{ needs.test.result != 'success' }}
+      - name: Verify job result
+        if: inputs.should_skip != 'true' && needs.test.result != 'success'
         run: exit 1
