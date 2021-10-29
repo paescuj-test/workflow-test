@@ -20,6 +20,6 @@ jobs:
               repo: context.repo.repo,
               sha: JSON.parse(process.env.WORKFLOW).head_sha,
               state: 'success',
-              context: 'CI / Unit Tests',
+              context: 'CI / Unit Tests (pull_request)',
               description: 'Skipped',
             })
