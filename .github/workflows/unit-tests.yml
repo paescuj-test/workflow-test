@@ -22,7 +22,7 @@ jobs:
 
   result:
     name: Result
-    if: ${{ inputs.should_skip != 'true' && always() }}
+    if: inputs.should_skip != 'true' && always()
     runs-on: ubuntu-latest
     needs: test
     steps:
