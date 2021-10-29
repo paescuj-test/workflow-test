@@ -40,7 +40,7 @@ jobs:
   unit_tests:
     name: Unit Tests
     needs: pre_check
-    uses: test-workflows/worflow-test/.github/workflows/unit-tests.yml@main
+    uses: test-workflows/workflow-test/.github/workflows/unit-tests.yml@main
     with:
       should_skip: ${{ needs.pre_check.outputs.should_skip }}
 
