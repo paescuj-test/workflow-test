@@ -25,6 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: Verify job result
+      - name: Verify test result
         if: inputs.should_skip != 'true' && needs.test.result != 'success'
         run: exit 1
