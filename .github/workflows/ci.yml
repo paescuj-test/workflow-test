@@ -40,9 +40,9 @@ jobs:
   unit_tests:
     name: Unit Tests
     needs: pre_check
-    if: github.event_name == 'push'
-    #if: needs.pre_check.outputs.should_skip != 'true'
     uses: test-workflows/workflow-test/.github/workflows/unit-tests.yml@main
+    with:
+      should_skip: ${{ needs.pre_check.outputs.should_skip }}
 
   # Run end-to-end tests only on push events (on main branch) for now
   e2e_tests:
