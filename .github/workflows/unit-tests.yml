@@ -18,7 +18,8 @@ jobs:
           - '14'
           - '16'
     steps:
-      - run: exit 0
+      - run: exit 1
+        if: matrix.node-version == '14'
 
   result:
     name: Result
