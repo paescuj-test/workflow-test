@@ -18,7 +18,7 @@ jobs:
             github.rest.repos.createCommitStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              sha: process.env.WORKFLOW.head_sha,
+              sha: JSON.parse(process.env.WORKFLOW).head_sha,
               state: 'success',
               context: 'CI / Unit Tests',
               description: 'Skipped',
