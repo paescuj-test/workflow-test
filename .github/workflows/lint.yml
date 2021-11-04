@@ -36,4 +36,4 @@ jobs:
         shell: sh {0}
         run: |
           npx tsc --build app
-          npx vue-tsc --project app
+          npx --yes vue-tsc --project app
