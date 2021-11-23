@@ -13,7 +13,7 @@ jobs:
     if: inputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - run: exit 0
+      - run: sleep 10
 
   check_types_vue:
     name: Check Types in Vue Files
