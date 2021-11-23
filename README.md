@@ -1,5 +1,3 @@
 # workflow-test
 
-test
-new
-aha
+test2
