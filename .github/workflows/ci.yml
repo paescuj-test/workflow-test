@@ -42,7 +42,7 @@ jobs:
             echo ${{ steps.skip_check.outputs.changed_files }}
             echo ${{ steps.skip_check.outputs.paths_result }}
         - name: Test if
-          if: steps.skip_check.outputs.paths_result.app.should_skip != 'true'
+          if: fromJSON(steps.skip_check.outputs.paths_result).app.should_skip != 'true'
           run: echo "I run"
 
   lint:
