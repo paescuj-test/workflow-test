@@ -21,14 +21,20 @@ jobs:
     steps:
         - name: Check if workflow is skippable
           id: skip_check
-          uses: fkirc/skip-duplicate-actions@master
+          uses: paescuj/skip-duplicate-actions@path-filters
           # Run all the jobs if the pre-check should fail for any reason
           # (the pre-check will be marked as 'passed', better solution pending at https://github.com/actions/toolkit/issues/399)
           continue-on-error: true
           with:
             # Cancel outdated workflow-runs
             cancel_others: 'true'
-            paths_ignore: '["app/src/lang/translations/*.yaml"]'
+            paths: |
+              app:
+                paths:
+                  - 'app/**/*'
+            #paths_ignore: '["app/src/lang/translations/*.yaml"]'
+        - name: Test output
+          run: echo ${{ steps.skip_check.outputs.result }}
 
   lint:
     name: Lint
