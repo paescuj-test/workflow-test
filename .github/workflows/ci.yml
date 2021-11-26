@@ -28,13 +28,19 @@ jobs:
           with:
             # Cancel outdated workflow-runs
             cancel_others: 'true'
-            paths: |
+            paths_filter: |
               app:
                 paths:
                   - 'app/**/*'
-            #paths_ignore: '["app/src/lang/translations/*.yaml"]'
+                paths_ignore:
+                  - 'app/src/lang/translations/*.yaml'
         - name: Test output
-          run: echo ${{ steps.skip_check.outputs.result }}
+          run: |
+            echo ${{ steps.skip_check.outputs.should_skip }}
+            echo ${{ steps.skip_check.outputs.skipped_by }}
+            echo ${{ steps.skip_check.outputs.skip_reason }}
+            echo ${{ steps.skip_check.outputs.changed_files }}
+            echo ${{ steps.skip_check.outputs.paths_result }}
 
   lint:
     name: Lint
