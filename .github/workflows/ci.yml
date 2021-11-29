@@ -17,7 +17,7 @@ jobs:
       # - Exact same files have been successfully checked in older run
       # - Only files that do not require checks have been changed (paths_ignore)
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
-      skipped_by: ${{ steps.skip_check.outputs.skipped_by }}
+      paths_result: ${{ steps.skip_check.outputs.paths_result }}
     steps:
         - name: Check if workflow is skippable
           id: skip_check
@@ -34,28 +34,15 @@ jobs:
                 paths:
                   - 'app/**/*'
               api:
-                backtracking: false
                 paths:
                   - 'api/**/*'
-        - name: Test output
-          run: |
-            echo ${{ steps.skip_check.outputs.should_skip }}
-            echo ${{ steps.skip_check.outputs.reason }}
-            echo ${{ steps.skip_check.outputs.skipped_by }}
-            echo ${{ steps.skip_check.outputs.changed_files }}
-            echo '${{ toJSON(fromJSON(steps.skip_check.outputs.changed_files)[0]) }}'
-            echo '${{ toJSON(join(steps.skip_check.outputs.changed_files, ', ')) }}'
-            echo '${{ steps.skip_check.outputs.paths_result }}'
-        - name: Test api
-          if: steps.skip_check.outputs.should_skip != 'true' && !fromJSON(steps.skip_check.outputs.paths_result).api.should_skip
-          run: echo "Test api runs"
 
   lint:
     name: Lint
     needs: pre_check
     uses: paescuj/workflow-test/.github/workflows/lint.yml@main
     with:
-      should_skip: ${{ needs.pre_check.outputs.should_skip }}
+      should_skip: ${{ needs.pre_check.outputs.should_skip || fromJSON(steps.skip_check.outputs.paths_result).api.should_skip }}
 
   unit_tests:
     name: Unit Tests
