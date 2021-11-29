@@ -42,7 +42,7 @@ jobs:
     needs: pre_check
     uses: paescuj/workflow-test/.github/workflows/lint.yml@main
     with:
-      should_skip: ${{ needs.pre_check.outputs.should_skip || fromJSON(steps.skip_check.outputs.paths_result).api.should_skip }}
+      should_skip: ${{ needs.pre_check.outputs.should_skip || fromJSON(needs.pre_check.outputs.paths_result).api.should_skip }}
 
   unit_tests:
     name: Unit Tests
