@@ -29,7 +29,7 @@ jobs:
             # Cancel outdated workflow-runs
             cancel_others: 'true'
             paths_ignore: '["app/src/languages/*.yaml"]'
-            #paths: ['api']''
+            paths: '["api/**/*"]'
         - name: Test output
           run: |
             echo ${{ steps.skip_check.outputs.should_skip }}
