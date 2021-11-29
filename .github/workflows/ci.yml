@@ -32,8 +32,6 @@ jobs:
               app:
                 paths:
                   - 'app/**/*'
-                paths_ignore:
-                  - 'app/src/lang/translations/*.yaml'
         - name: Test output
           run: |
             echo ${{ steps.skip_check.outputs.should_skip }}
