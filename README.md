@@ -1,4 +1,2 @@
 # workflow-test
 
-test
-test
