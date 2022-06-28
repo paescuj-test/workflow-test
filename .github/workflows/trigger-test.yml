@@ -26,6 +26,6 @@ jobs:
               issue_number: (context.payload.issue || context.payload.pull_request || context.payload).number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `👋 Thanks for reporting!\n\`\`\`json\n${JSON.stringify(context)}\n\`\`\``
+              body: `👋 Thanks for reporting!\n\`\`\`json\n${JSON.stringify(context, null, 2)}\n\`\`\``
             })
 
