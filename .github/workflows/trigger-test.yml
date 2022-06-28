@@ -6,6 +6,7 @@ on:
       - labeled
       - unlabeled
       - edited
+      - closed
   issues:
     types:
       - milestoned
