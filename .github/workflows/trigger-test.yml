@@ -1,0 +1,31 @@
+name: Trigger Test
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - edited
+  issues:
+    types:
+      - milestoned
+      - demilestoned
+  issue_comment:
+    types:
+      - edited
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: (context.payload.issue || context.payload.pull_request || context.payload).number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `👋 Thanks for reporting!\n\`\`\`json\n${JSON.stringify(context)}\n\`\`\``
+            })
+
